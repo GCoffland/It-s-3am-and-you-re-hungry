@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private readonly float MOVE_POWER = 1;
-    private readonly float JUMP_POWER = 1;
+    private readonly float MOVE_POWER = 4;
+    private readonly float JUMP_POWER = 5;
     private Rigidbody2D rb;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
@@ -17,8 +17,14 @@ public class PlayerBehavior : MonoBehaviour
         }
         private set
         {
-            closestObjectInternal.GetComponent<Interactable>().highlighted = false;
-            value.GetComponent<Interactable>().highlighted = true;
+            if(closestObjectInternal != null)
+            {
+                closestObjectInternal.GetComponent<Interactable>().highlighted = false;
+            }
+            if(value != null)
+            {
+                value.GetComponent<Interactable>().highlighted = true;
+            }
             closestObjectInternal = value;
         }
     }
@@ -34,10 +40,10 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         closestObject = getClosestInteractable();
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, 0f);
-        if (Input.GetButtonDown("Jump"))
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
-            rb.velocity = rb.velocity + new Vector2(0, JUMP_POWER);
+            rb.velocity = new Vector2(rb.velocity.x, 0) + new Vector2(0, JUMP_POWER);
         }
         if (Input.GetButtonDown("Interact"))
         {
@@ -64,6 +70,20 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
         return closestObject;
+    }
+
+    private bool isGrounded()
+    {
+        ContactPoint2D[] points = new ContactPoint2D[10];
+        int num = gameObject.GetComponent<BoxCollider2D>().GetContacts(points);
+        for(int i = 0; i < num; i++)
+        {
+            if (points[i].point.y <= gameObject.GetComponent<BoxCollider2D>().bounds.min.y + 0.01)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
