@@ -6,6 +6,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     private readonly float MOVE_POWER = 4;
     private readonly float JUMP_POWER = 5;
+    [SerializeField]
     private Rigidbody2D rb;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
@@ -32,7 +33,6 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         nearbyInteractables = new List<GameObject>();
     }
 

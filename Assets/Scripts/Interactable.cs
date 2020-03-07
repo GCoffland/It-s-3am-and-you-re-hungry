@@ -23,13 +23,13 @@ public abstract class Interactable : MonoBehaviour
             }
         }
     }
+    [SerializeField]
     private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
         highlightedInternal = false;
-        sr = this.GetComponent<SpriteRenderer>();
     }
     
 
