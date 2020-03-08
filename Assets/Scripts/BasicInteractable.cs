@@ -7,7 +7,7 @@ public class BasicInteractable : Interactable
     
     public override void Interact()
     {
-
+        Debug.Log("Interacted!");
     }
 
 }

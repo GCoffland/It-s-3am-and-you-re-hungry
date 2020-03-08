@@ -12,6 +12,8 @@ public class OwlHitBuildingEvent : Event
 
     public override void occur()
     {
+        if (occured)
+            return;
         base.occur();
         Debug.Log("the owl hit the building!");
     }
