@@ -9,6 +9,9 @@ public class AlarmClock : MonoBehaviour
     private bool alarm320occured = false;
     private bool alarm340occured = false;
     private bool alarm400occured = false;
+
+    public SpriteRenderer soundVisuals;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +23,21 @@ public class AlarmClock : MonoBehaviour
     {
         if (!alarm320occured && Timer.getTime() >= 20)
         {
+            showAlarmVisuals();
             Events.getEventByType(typeof(AlarmClock320Event)).occur();
             alarm320occured = true;
         }
 
         if (!alarm340occured && Timer.getTime() >= 40)
         {
+            showAlarmVisuals();
             Events.getEventByType(typeof(AlarmClock340Event)).occur();
             alarm340occured = true;
         }
 
         if (!alarm400occured && Timer.getTime() > 59)
         {
+            showAlarmVisuals();
             Events.getEventByType(typeof(PieTakenFromLedgeEvent)).occur();
             alarm400occured = true;
         }
@@ -40,5 +46,12 @@ public class AlarmClock : MonoBehaviour
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
+    }
+
+    public void showAlarmVisuals()
+    {
+        soundVisuals.color = Color.white;
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/AlarmClock");
+        soundVisuals.GetComponent<Animator>().Play("AlarmSoundVisuals");
     }
 }

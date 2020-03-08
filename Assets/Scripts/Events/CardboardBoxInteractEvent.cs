@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CardboardBoxInteractEvent : Event
 {
+    public GameObject rats;
+
     public override void occur()
     {
         if (occured)
@@ -11,6 +13,7 @@ public class CardboardBoxInteractEvent : Event
         base.occur();
         Debug.Log("Flipped the box!");
         GetComponent<SpriteRenderer>().color = Color.red;
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/RatSqueek");
         GetComponent<Animator>().Play("OpenBox");
     }
     
