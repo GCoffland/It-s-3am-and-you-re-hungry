@@ -11,10 +11,7 @@ public class CardboardBoxInteractEvent : Event
         base.occur();
         Debug.Log("Flipped the box!");
         GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<Animator>().Play("OpenBox");
     }
-
-    private void Update()
-    {
-        
-    }
+    
 }
