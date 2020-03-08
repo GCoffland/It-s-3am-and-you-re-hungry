@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     private readonly float MOVE_POWER = 20;
-    private readonly float JUMP_POWER = 45;
+    private readonly float JUMP_POWER = 25;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
