@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6793750701263465654}
   - component: {fileID: 6793750701263465653}
   - component: {fileID: 6793750701263465652}
+  - component: {fileID: 3954660174003454001}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -72,8 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2317924996179919420, guid: 3cf08a0af20215d44b163a97fe2d2a91,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c4e9b12cf8b4764081e74f7bf7087c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8600bd4e6a97df84fa34ce6019af0775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 6793750701263465653}
 --- !u!50 &6793750701263465653
 Rigidbody2D:
   serializedVersion: 4
@@ -117,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6793750701263465652
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +130,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.009251639, y: 0.07401323}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -142,5 +141,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.89823186, y: 0.74095345}
   m_EdgeRadius: 0
+--- !u!95 &3954660174003454001
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793750701263465643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df7128ac5b0c5dc4faa1fd4de02dbfd4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

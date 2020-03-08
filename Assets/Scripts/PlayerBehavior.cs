@@ -6,8 +6,9 @@ public class PlayerBehavior : MonoBehaviour
 {
     private readonly float MOVE_POWER = 20;
     private readonly float JUMP_POWER = 45;
-    [SerializeField]
     private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer sr;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
     public GameObject closestObject
@@ -34,6 +35,9 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         nearbyInteractables = new List<GameObject>();
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -52,6 +56,15 @@ public class PlayerBehavior : MonoBehaviour
                 closestObject.GetComponent<Interactable>().Interact();
             }
         }
+        if(rb.velocity.x < 0)
+        {
+            sr.flipX = true;
+        }
+        else if(rb.velocity.x > 0)
+        {
+            sr.flipX = false;
+        }
+        anim.SetFloat("HorizontalVelocity", rb.velocity.x);
     }
 
     private GameObject getClosestInteractable()
