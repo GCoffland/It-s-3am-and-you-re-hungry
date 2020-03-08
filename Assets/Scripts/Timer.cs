@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
 
     private float currentTime;
-    private float scale = 1;
+    private float scale = 4;
     private float startTime;
     private static Timer instance;
 
