@@ -16,5 +16,7 @@ public class OwlHitBuildingEvent : Event
             return;
         base.occur();
         Debug.Log("the owl hit the building!");
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/OwlThud");
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/OwlScreech");
     }
 }
