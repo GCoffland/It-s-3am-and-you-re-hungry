@@ -20,7 +20,6 @@ public abstract class Interactable : MonoBehaviour
         {
             if (value)
             {
-                Debug.Log("touched");
                 sr.sharedMaterial = highlightedMaterial;
             }
             else

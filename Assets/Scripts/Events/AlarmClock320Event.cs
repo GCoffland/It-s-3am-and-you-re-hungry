@@ -8,7 +8,7 @@ public class AlarmClock320Event : Event
     {
         if (occured)
             return;
-        Debug.Log("3:20 blaze it");
+        Events.getEventByType(typeof(OwlEvent)).occur();
         base.occur();
     }
 }

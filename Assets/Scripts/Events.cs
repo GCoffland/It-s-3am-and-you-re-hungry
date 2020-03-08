@@ -28,5 +28,20 @@ public class Events : MonoBehaviour
         return instance.events[type];
     }
 
+    public void printEventData()
+    {
+        Debug.Log("----------------Printing all event data------------------");
+        foreach(KeyValuePair<System.Type, Event> pair in events)
+        {
+            Debug.Log(pair.Key.ToString() + " has " + (pair.Value.occured ? "" : " not ") + "occured");
+        }
+        Debug.Log("--------------------End event data-----------------------");
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            printEventData();
+    }
 
 }
