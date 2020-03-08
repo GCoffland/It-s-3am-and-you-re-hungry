@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private readonly float MOVE_POWER = 4;
-    private readonly float JUMP_POWER = 5;
+    private readonly float MOVE_POWER = 20;
+    private readonly float JUMP_POWER = 45;
     [SerializeField]
     private Rigidbody2D rb;
     private List<GameObject> nearbyInteractables;

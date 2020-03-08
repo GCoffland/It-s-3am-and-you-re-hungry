@@ -47,10 +47,10 @@
 				outlineC.a *= ceil(c.a);
 				outlineC.rgb *= c.a;
 
-				fixed upAlpha = tex2D(_MainTex, i.uv + 3 * fixed2(0, _MainTex_TexelSize.y)).a;
-				fixed downAlpha = tex2D(_MainTex, i.uv - 3 * fixed2(0, _MainTex_TexelSize.y)).a;
-				fixed rightAlpha = tex2D(_MainTex, i.uv + 3 * fixed2(_MainTex_TexelSize.x, 0)).a;
-				fixed leftAlpha = tex2D(_MainTex, i.uv - 3 * fixed2(_MainTex_TexelSize.y, 0)).a;
+				fixed upAlpha = tex2D(_MainTex, i.uv + 13 * fixed2(0, _MainTex_TexelSize.y)).a;
+				fixed downAlpha = tex2D(_MainTex, i.uv - 13 * fixed2(0, _MainTex_TexelSize.y)).a;
+				fixed rightAlpha = tex2D(_MainTex, i.uv + 13 * fixed2(_MainTex_TexelSize.x, 0)).a;
+				fixed leftAlpha = tex2D(_MainTex, i.uv - 13 * fixed2(_MainTex_TexelSize.y, 0)).a;
 
 				return lerp(outlineC, c, ceil(upAlpha * downAlpha * rightAlpha * leftAlpha));
 		}

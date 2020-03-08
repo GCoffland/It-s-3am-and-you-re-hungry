@@ -12,4 +12,9 @@ public class CardboardBoxInteractEvent : Event
         Debug.Log("Flipped the box!");
         GetComponent<SpriteRenderer>().color = Color.red;
     }
+
+    private void Update()
+    {
+        
+    }
 }
