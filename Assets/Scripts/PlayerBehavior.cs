@@ -30,6 +30,7 @@ public class PlayerBehavior : MonoBehaviour
             closestObjectInternal = value;
         }
     }
+    private bool grounded;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,12 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        grounded = isGrounded();
         closestObject = getClosestInteractable();
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
-        if (Input.GetButtonDown("Jump") && isGrounded())
+        if (Input.GetButtonDown("Jump") && grounded)
         {
+            anim.Play("RacoonJump");
             rb.velocity = new Vector2(rb.velocity.x, 0) + new Vector2(0, JUMP_POWER);
         }
         if (Input.GetButtonDown("Interact"))
@@ -65,6 +68,8 @@ public class PlayerBehavior : MonoBehaviour
             sr.flipX = false;
         }
         anim.SetFloat("HorizontalVelocity", rb.velocity.x);
+        anim.SetFloat("VerticalVelocity", rb.velocity.y);
+        anim.SetBool("IsGrounded", grounded);
     }
 
     private GameObject getClosestInteractable()
