@@ -6,22 +6,31 @@ using TMPro;
 public class AlarmClockNumbers : MonoBehaviour
 {
     private TextMeshProUGUI text;
+    Transform anchor;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("AlarmClockTransform").transform.position);
+        anchor = GameObject.Find("AlarmClockTransform").transform;
         text = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Timer.getTime() < 1)
-            text.text = "3:00";
-        else if (Timer.getTime() < 10)
-            text.text = "3:0" + Timer.getTime();
-        else
-            text.text = "3:" + Timer.getTime();
-        
+        transform.position = Camera.main.WorldToScreenPoint(anchor.position);
+        int time = Timer.getTime();
+        char firstDigit = '3';
+        if (time >= 60)
+        {
+            time %= 60;
+            firstDigit++;
+        }
+        if (time < 1)
+            text.text = firstDigit + ":00";
+        else if (time < 10)
+            text.text = firstDigit + ":0" + time;
+        else if (time < 60)
+            text.text = firstDigit + ":" + time;
+
     }
 }

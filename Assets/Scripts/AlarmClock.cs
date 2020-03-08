@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AlarmClock : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class AlarmClock : MonoBehaviour
         {
             Events.getEventByType(typeof(PieTakenFromLedgeEvent)).occur();
             alarm400occured = true;
+        }
+        if(Timer.getTime() >= 70)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
     }
 }

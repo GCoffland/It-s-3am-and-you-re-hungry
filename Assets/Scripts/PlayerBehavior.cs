@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     private readonly float MOVE_POWER = 20;
-    private readonly float JUMP_POWER = 45;
+    private readonly float JUMP_POWER = 25;
     [SerializeField]
     private Rigidbody2D rb;
     private List<GameObject> nearbyInteractables;
