@@ -6,8 +6,9 @@ public class PlayerBehavior : MonoBehaviour
 {
     private readonly float MOVE_POWER = 20;
     private readonly float JUMP_POWER = 25;
-    [SerializeField]
     private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer sr;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
     public GameObject closestObject
@@ -29,20 +30,26 @@ public class PlayerBehavior : MonoBehaviour
             closestObjectInternal = value;
         }
     }
+    private bool grounded;
 
     // Start is called before the first frame update
     void Start()
     {
         nearbyInteractables = new List<GameObject>();
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        grounded = isGrounded();
         closestObject = getClosestInteractable();
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
-        if (Input.GetButtonDown("Jump") && isGrounded())
+        if (Input.GetButtonDown("Jump") && grounded)
         {
+            anim.Play("RacoonJump");
             rb.velocity = new Vector2(rb.velocity.x, 0) + new Vector2(0, JUMP_POWER);
         }
         if (Input.GetButtonDown("Interact"))
@@ -52,6 +59,17 @@ public class PlayerBehavior : MonoBehaviour
                 closestObject.GetComponent<Interactable>().Interact();
             }
         }
+        if(rb.velocity.x < 0)
+        {
+            sr.flipX = true;
+        }
+        else if(rb.velocity.x > 0)
+        {
+            sr.flipX = false;
+        }
+        anim.SetFloat("HorizontalVelocity", rb.velocity.x);
+        anim.SetFloat("VerticalVelocity", rb.velocity.y);
+        anim.SetBool("IsGrounded", grounded);
     }
 
     private GameObject getClosestInteractable()
