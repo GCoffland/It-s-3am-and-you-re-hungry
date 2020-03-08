@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     private bool highlightedInternal;
+    private Material initalMaterial;
+    private Material highlightedMaterial;
+    private SpriteRenderer sr;
+
+    
     public bool highlighted
     {
         get
@@ -15,21 +20,26 @@ public abstract class Interactable : MonoBehaviour
         {
             if (value)
             {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+                Debug.Log("touched");
+                sr.sharedMaterial = highlightedMaterial;
             }
             else
             {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+                sr.sharedMaterial = initalMaterial;
             }
         }
     }
-    [SerializeField]
-    private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
         highlightedInternal = false;
+        sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            initalMaterial = sr.sharedMaterial;
+            highlightedMaterial = (Material)Resources.Load("Materials/ShaderMaterial");
+        }
     }
     
 

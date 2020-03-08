@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlarmClock340Event : Event
+public class AlarmClock320Event : Event
 {
     public override void occur()
     {
-        Debug.Log("3:40 blaze it");
+        if (occured)
+            return;
+        Debug.Log("3:20 blaze it");
         base.occur();
     }
 }

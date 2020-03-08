@@ -13,7 +13,7 @@ public class DebugScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown){
+        if (Input.GetKeyDown("q")){
             Events.getEventByType(typeof(OwlEvent)).occur();
         }
     }
