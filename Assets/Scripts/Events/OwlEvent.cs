@@ -24,6 +24,7 @@ public class OwlEvent : Event
             else
                 owl.GetComponent<Animator>().Play("OwlSwoopIntoBuilding");
         }
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/OwlTakeOff");
         base.occur();
     }
 
