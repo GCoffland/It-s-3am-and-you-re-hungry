@@ -14,11 +14,20 @@ public class SoundEffectPlayer : MonoBehaviour
         players = new List<AudioSource>();
     }
 
-    public void Play(string path)
+    public AudioSource Play(string path)
     {
         AudioSource p = getAvailablePlayer();
         p.clip = Resources.Load<AudioClip>(path);
         p.Play();
+        return p;
+    }
+
+    public AudioSource PlayOnDelay(string path, float delay)
+    {
+        AudioSource p = getAvailablePlayer();
+        p.clip = Resources.Load<AudioClip>(path);
+        p.PlayDelayed(delay);
+        return p;
     }
 
     private AudioSource getAvailablePlayer()
