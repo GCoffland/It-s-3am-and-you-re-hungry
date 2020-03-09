@@ -9,6 +9,14 @@ public class AlarmClock340Event : Event
         if (occured)
             return;
         Debug.Log("3:40 blaze it");
+        StartCoroutine(annoyNeighbor());
+
         base.occur();
+    }
+
+    public IEnumerator annoyNeighbor()
+    {
+        yield return new WaitForSeconds(4f);
+        Events.getEventByType(typeof(SecondFloorWindowTurnOnEvent)).occur();
     }
 }

@@ -8,7 +8,7 @@ public class SoundEffectPlayer : MonoBehaviour
     private List<AudioSource> players;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
         players = new List<AudioSource>();
