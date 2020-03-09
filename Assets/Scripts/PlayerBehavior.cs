@@ -45,6 +45,7 @@ public class PlayerBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim.SetBool("Smelling", smelling);
     }
 
     // Update is called once per frame
@@ -52,13 +53,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (smelling)
         {
-            if (transform.position.x < scentTrailEnd.position.x)
+            if (transform.position.x < scentTrailEnd.position.x && transform.position.y < scentTrailEnd.position.y + 5 && transform.position.y > scentTrailEnd.position.y - 5)
             {
                 rb.velocity = new Vector2(4, 0);
+                sr.flipX = !(transform.position.x < scentTrailEnd.position.x);
             }
             else
             {
                 smelling = false;
+                anim.SetBool("Smelling", smelling);
                 rb.gravityScale = 8;
             }
         }
@@ -173,6 +176,9 @@ public class PlayerBehavior : MonoBehaviour
     public void grabScentTrail()
     {
         smelling = true;
+        anim.SetBool("Smelling", smelling);
         rb.gravityScale = 0;
+        anim.Play("Float");
+        
     }
 }
