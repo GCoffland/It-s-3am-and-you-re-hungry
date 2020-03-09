@@ -25,7 +25,9 @@ public class RightDoorInteractBehavior : Interactable
         SideWindows.transform.position = SideWindows.transform.position - new Vector3(0, 0, 2);
         yield return new WaitForSeconds(1f);
         AudioSource audios = SoundEffectPlayer.instance.Play("Sounds/SoundEffects/GlassChaos");
-        yield return new WaitForSeconds(audios.clip.length + 2f);
+        yield return new WaitForSeconds(audios.clip.length - 3f);
+        Events.getEventByType(typeof(FanGetsPoweredEvent)).occur();
+        yield return new WaitForSeconds(5f);
         SoundEffectPlayer.instance.Play("Sounds/SoundEffects/LightSwitch");
         FrontWindow.transform.position = FrontWindow.transform.position + new Vector3(0, 0, 2);
         SideWindows.transform.position = SideWindows.transform.position + new Vector3(0, 0, 2);
