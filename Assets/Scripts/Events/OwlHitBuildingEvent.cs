@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class OwlHitBuildingEvent : Event
 {
-
+    public GameObject clothesLine;
     public ParticleSystem ps;
+    public Animator clotheslineanim;
 
     // Update is called once per frame
     void Update()
@@ -27,5 +28,6 @@ public class OwlHitBuildingEvent : Event
         ps.Emit(30);
         SoundEffectPlayer.instance.Play("Sounds/SoundEffects/OwlThud");
         SoundEffectPlayer.instance.Play("Sounds/SoundEffects/OwlScreech");
+        clotheslineanim.Play("Clotheslinefalls");
     }
 }
