@@ -6,6 +6,7 @@ public class FanGetsPoweredEvent : Event
 {
     public int fanSpeed = 0;
     public bool pieKnockedOff = false;
+    public GameObject trail;
 
     public override void occur()
     {
@@ -17,9 +18,23 @@ public class FanGetsPoweredEvent : Event
         }
         fanSpeed++;
         a.speed = fanSpeed;
-        if(fanSpeed > 4 && !pieKnockedOff)
+        if(fanSpeed >= 2 && !pieKnockedOff)
         {
             Events.getEventByType(typeof(PieGetsKnockedOffEvent)).occur();
+            pieKnockedOff = true;
+            trail.SetActive(false);
         }
+        else if (!pieKnockedOff)
+        {
+            trail.SetActive(true);
+        }
+    }
+
+    public void powerOff()
+    {
+        trail.SetActive(false);
+        fanSpeed = 0;
+        Animator a = GetComponent<Animator>();
+        a.Play("FanOff");
     }
 }

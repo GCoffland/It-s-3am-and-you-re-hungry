@@ -30,7 +30,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PieFloat
-  m_Speed: 0.12
+  m_Speed: 0.012
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7624752282945178144}
@@ -132,7 +132,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2628272733823426254}
-    m_Position: {x: 300, y: 10, z: 0}
+    m_Position: {x: 220, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -993911859895172078}
     m_Position: {x: 382.90594, y: 214.91452, z: 0}
