@@ -53,7 +53,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (smelling)
         {
-            if (transform.position.x < scentTrailEnd.position.x && transform.position.y < scentTrailEnd.position.y + 5 && transform.position.y > scentTrailEnd.position.y - 5)
+            if (transform.position.x < scentTrailEnd.position.x)
             {
                 rb.velocity = new Vector2(4, 0);
                 sr.flipX = !(transform.position.x < scentTrailEnd.position.x);
@@ -79,7 +79,15 @@ public class PlayerBehavior : MonoBehaviour
             {
                 if (closestObject != null)
                 {
-                    closestObject.GetComponent<Interactable>().Interact();
+                    if(closestObject.GetComponent<ScentTrailInteractable>() != null)
+                    {
+                        grabScentTrail();
+                    }
+                    else
+                    {
+                        closestObject.GetComponent<Interactable>().Interact();
+                    }
+                    
                 }
             }
             if (rb.velocity.x < 0)
@@ -93,10 +101,6 @@ public class PlayerBehavior : MonoBehaviour
             anim.SetFloat("HorizontalVelocity", rb.velocity.x);
             anim.SetFloat("VerticalVelocity", rb.velocity.y);
             anim.SetBool("IsGrounded", grounded);
-        }
-        if (Input.GetKeyDown("q"))
-        {
-            grabScentTrail();
         }
         if(canClimb && !isClimbing && Input.GetAxis("Vertical") > 0.1)
         {
