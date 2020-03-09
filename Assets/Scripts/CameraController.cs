@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     private Vector3 pos;
     public float width;
     public float height;
+    public bool won = false;
 
     private GameObject player;
     // Start is called before the first frame update
@@ -21,7 +22,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = pos + new Vector3(player.transform.position.x * 100 / width, player.transform.position.y * 100 / width, -10);
-        transform.position = newPosition;
+        if (!won)
+        {
+            Vector3 newPosition = pos + new Vector3(player.transform.position.x * 100 / width, player.transform.position.y * 100 / width, -10);
+            transform.position = newPosition;
+        }
     }
 }

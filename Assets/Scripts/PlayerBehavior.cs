@@ -11,6 +11,10 @@ public class PlayerBehavior : MonoBehaviour
     private SpriteRenderer sr;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
+    private bool smelling = false;
+
+    public Transform scentTrailEnd;
+
     public GameObject closestObject
     {
         get
@@ -44,32 +48,51 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = isGrounded();
-        closestObject = getClosestInteractable();
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (smelling)
         {
-            anim.Play("RacoonJump");
-            rb.velocity = new Vector2(rb.velocity.x, 0) + new Vector2(0, JUMP_POWER);
-        }
-        if (Input.GetButtonDown("Interact"))
-        {
-            if(closestObject != null)
+            if (transform.position.x < scentTrailEnd.position.x)
             {
-                closestObject.GetComponent<Interactable>().Interact();
+                rb.velocity = new Vector2(4, 0);
+            }
+            else
+            {
+                smelling = false;
+                rb.gravityScale = 8;
             }
         }
-        if(rb.velocity.x < 0)
+        else
         {
-            sr.flipX = true;
+            grounded = isGrounded();
+            closestObject = getClosestInteractable();
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                anim.Play("RacoonJump");
+                rb.velocity = new Vector2(rb.velocity.x, 0) + new Vector2(0, JUMP_POWER);
+            }
+            if (Input.GetButtonDown("Interact"))
+            {
+                if (closestObject != null)
+                {
+                    closestObject.GetComponent<Interactable>().Interact();
+                }
+            }
+            if (rb.velocity.x < 0)
+            {
+                sr.flipX = true;
+            }
+            else if (rb.velocity.x > 0)
+            {
+                sr.flipX = false;
+            }
+            anim.SetFloat("HorizontalVelocity", rb.velocity.x);
+            anim.SetFloat("VerticalVelocity", rb.velocity.y);
+            anim.SetBool("IsGrounded", grounded);
         }
-        else if(rb.velocity.x > 0)
+        if (Input.GetKeyDown("q"))
         {
-            sr.flipX = false;
+            grabScentTrail();
         }
-        anim.SetFloat("HorizontalVelocity", rb.velocity.x);
-        anim.SetFloat("VerticalVelocity", rb.velocity.y);
-        anim.SetBool("IsGrounded", grounded);
     }
 
     private GameObject getClosestInteractable()
@@ -118,5 +141,11 @@ public class PlayerBehavior : MonoBehaviour
         {
             nearbyInteractables.Remove(collision.gameObject);
         }
+    }
+
+    public void grabScentTrail()
+    {
+        smelling = true;
+        rb.gravityScale = 0;
     }
 }

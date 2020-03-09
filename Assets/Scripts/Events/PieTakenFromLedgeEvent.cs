@@ -9,6 +9,7 @@ public class PieTakenFromLedgeEvent : Event
         base.occur();
         // GameObject.Find("PieGoneText").GetComponent<PieIsGoneTextBehaviour>().startDisplayingText();
         gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+        SoundEffectPlayer.instance.Play("Sounds/SoundEffects/MunchingLose");
         Debug.Log("THE PIE. THE PIE IS GONE. DEAR SWEET RACCOON JESUS THE PIE HAS BEEN TAKEN. OH GOD NO, I WILL NEVER TASTE THE SWEET FRUITY FLESH OF THAT BEAUTIFUL SUGAR FILLED PASTRY. (game over)");
     }
 }
