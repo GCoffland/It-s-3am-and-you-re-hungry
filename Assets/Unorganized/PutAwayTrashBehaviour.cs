@@ -9,15 +9,23 @@ public class PutAwayTrashBehaviour : StateMachineBehaviour
     {
         if (Events.getEventByType(typeof(CardboardBoxInteractEvent)).occured)
         {
+            GameObject.Find("TrashCanLid").GetComponent<Animator>().Play("LidFlip");
+            SoundEffectPlayer.instance.Play("Sounds/SoundEffects/TrashCanUse");
+            animator.transform.GetChild(2).GetComponent<SpriteRenderer>().color = Color.clear;
+            animator.Play("RunAway");
+            SoundEffectPlayer.instance.Play("Sounds/SoundEffects/Scream");
+            /*
             animator.transform.GetChild(1).GetComponent<Animator>().Play("ShowExclamation");
             animator.Play("RunAway");
             SoundEffectPlayer.instance.Play("Sounds/SoundEffects/Scream");
+            */
         }
         else
         {
             GameObject.Find("TrashCanLid").GetComponent<Animator>().Play("LidFlip");
             SoundEffectPlayer.instance.Play("Sounds/SoundEffects/TrashCanUse");
             animator.Play("GoBack");
+            GameObject.Find("TrashCanLid").GetComponent<Animator>().Play("FlipClosed");
             animator.transform.GetChild(2).GetComponent<SpriteRenderer>().color = Color.clear;
         }
     }
