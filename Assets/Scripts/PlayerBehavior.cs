@@ -146,7 +146,7 @@ public class PlayerBehavior : MonoBehaviour
         int num = gameObject.GetComponent<BoxCollider2D>().GetContacts(points);
         for(int i = 0; i < num; i++)
         {
-            if (points[i].point.y <= gameObject.GetComponent<BoxCollider2D>().bounds.min.y + 0.01)
+            if (points[i].point.y <= gameObject.GetComponent<BoxCollider2D>().bounds.min.y + 0.01 && points[i].point.x <= gameObject.GetComponent<BoxCollider2D>().bounds.max.x - 0.01 && points[i].point.x >= gameObject.GetComponent<BoxCollider2D>().bounds.min.x + 0.01)
             {
                 return true;
             }
