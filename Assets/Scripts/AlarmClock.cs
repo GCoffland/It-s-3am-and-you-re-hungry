@@ -28,7 +28,7 @@ public class AlarmClock : MonoBehaviour
             alarm320occured = true;
         }
 
-        if (!alarm340occured && Timer.getTime() >= 40)
+        if (!alarm340occured && Timer.getTime() >= 30)
         {
             showAlarmVisuals();
             Events.getEventByType(typeof(AlarmClock340Event)).occur();
