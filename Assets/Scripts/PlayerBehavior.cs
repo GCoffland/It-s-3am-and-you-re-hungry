@@ -95,8 +95,6 @@ public class PlayerBehavior : MonoBehaviour
         {
             grabScentTrail();
         }
-<<<<<<< HEAD
-=======
         if(canClimb && !isClimbing && Input.GetAxis("Vertical") > 0.1)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
@@ -115,7 +113,6 @@ public class PlayerBehavior : MonoBehaviour
         anim.SetFloat("VerticalVelocity", rb.velocity.y);
         anim.SetBool("IsGrounded", grounded);
         anim.SetBool("IsClimbing", isClimbing);
->>>>>>> af195aaac6eb5a48e12d3fcaafa451baed401386
     }
 
     private GameObject getClosestInteractable()
