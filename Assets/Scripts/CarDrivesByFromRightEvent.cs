@@ -25,6 +25,7 @@ public class CarDrivesByFromRightEvent : Event
         car.transform.localScale = new Vector3(car.transform.localScale.x * -.9f, car.transform.localScale.y * .9f, car.transform.localScale.z);
         car.transform.position = new Vector3(car.transform.position.x, car.transform.position.y, car.transform.position.z + UnityEngine.Random.Range(0, 0.1f));
         car.transform.GetChild(1).GetComponent<SpriteRenderer>().color = c;
+        car.transform.GetChild(1).transform.position = car.transform.GetChild(1).transform.position - new Vector3(0, 0, -0.1f);
         car.GetComponent<Animator>().speed = UnityEngine.Random.Range(1f, 3f);
         base.occur();
     }
