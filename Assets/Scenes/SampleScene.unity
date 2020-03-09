@@ -15472,16 +15472,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashGuyWrapperWrapper
       objectReference: {fileID: 0}
-    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 826689542839557057, guid: c37beb95213ed7d48a541a8156ad3459,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15536,6 +15526,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c37beb95213ed7d48a541a8156ad3459, type: 3}
@@ -15689,11 +15689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashCan
       objectReference: {fileID: 0}
-    - target: {fileID: 6179330578620171115, guid: d07aad9e685edc545b605e04cbfb7cbd,
-        type: 3}
-      propertyPath: m_Name
-      value: TrashCanLid
-      objectReference: {fileID: 0}
     - target: {fileID: 6179330577613544601, guid: d07aad9e685edc545b605e04cbfb7cbd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15798,6 +15793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UsedByEffector
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179330578620171115, guid: d07aad9e685edc545b605e04cbfb7cbd,
+        type: 3}
+      propertyPath: m_Name
+      value: TrashCanLid
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6179330578620170902, guid: d07aad9e685edc545b605e04cbfb7cbd, type: 3}
