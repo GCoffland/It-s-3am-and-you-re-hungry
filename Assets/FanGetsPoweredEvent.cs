@@ -17,9 +17,17 @@ public class FanGetsPoweredEvent : Event
         }
         fanSpeed++;
         a.speed = fanSpeed;
-        if(fanSpeed > 4 && !pieKnockedOff)
+        if(fanSpeed >= 2 && !pieKnockedOff)
         {
             Events.getEventByType(typeof(PieGetsKnockedOffEvent)).occur();
+            pieKnockedOff = true;
         }
+    }
+
+    public void powerOff()
+    {
+        fanSpeed = 0;
+        Animator a = GetComponent<Animator>();
+        a.Play("FanOff");
     }
 }

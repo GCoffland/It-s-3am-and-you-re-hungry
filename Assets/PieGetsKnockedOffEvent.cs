@@ -8,5 +8,6 @@ public class PieGetsKnockedOffEvent : Event
     {
         base.occur();
         Debug.Log("pie fall");
+        transform.parent.GetComponent<Animator>().Play("PieFall");
     }
 }

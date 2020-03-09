@@ -16,7 +16,9 @@ public class SecondFloorWindowTurnOnEvent : Event
 
     public IEnumerator turnOffLight()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
+        ((FanGetsPoweredEvent)Events.getEventByType(typeof(FanGetsPoweredEvent))).powerOff();
+        yield return new WaitForSeconds(3f);
         transform.position = transform.position + new Vector3(0, 0, 2);
         SoundEffectPlayer.instance.Play("Sounds/SoundEffects/LightSwitch");
     }
