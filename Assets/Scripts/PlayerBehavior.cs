@@ -31,6 +31,8 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
     private bool grounded;
+    private bool canClimb;
+    private bool isClimbing;
 
     // Start is called before the first frame update
     void Start()
@@ -67,9 +69,24 @@ public class PlayerBehavior : MonoBehaviour
         {
             sr.flipX = false;
         }
+        if(canClimb && !isClimbing && Input.GetAxis("Vertical") > 0.1)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            isClimbing = true;
+        }
+        if (isClimbing)
+        {
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, Input.GetAxis("Vertical") * MOVE_POWER);
+        }
+        if(isClimbing && !canClimb)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            isClimbing = false;
+        }
         anim.SetFloat("HorizontalVelocity", rb.velocity.x);
         anim.SetFloat("VerticalVelocity", rb.velocity.y);
         anim.SetBool("IsGrounded", grounded);
+        anim.SetBool("IsClimbing", isClimbing);
     }
 
     private GameObject getClosestInteractable()
@@ -109,6 +126,9 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.GetComponent<Interactable>() != null)
         {
             nearbyInteractables.Add(collision.gameObject);
+        }else if(collision.gameObject.GetComponent<clotheslineInteractable>() != null)
+        {
+            canClimb = collision.gameObject.GetComponent<Animator>().GetBool("HasFallen");
         }
     }
 
@@ -117,6 +137,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.GetComponent<Interactable>() != null)
         {
             nearbyInteractables.Remove(collision.gameObject);
+        }
+        else if (collision.gameObject.GetComponent<clotheslineInteractable>() != null)
+        {
+            canClimb = false;
         }
     }
 }
