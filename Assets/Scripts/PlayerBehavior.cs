@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
+    private BoxCollider2D col;
     private List<GameObject> nearbyInteractables;
     private GameObject closestObjectInternal;
     private bool smelling = false;
@@ -45,6 +46,7 @@ public class PlayerBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        col = GetComponent<BoxCollider2D>();
         anim.SetBool("Smelling", smelling);
     }
 
@@ -68,6 +70,7 @@ public class PlayerBehavior : MonoBehaviour
         else
         {
             grounded = isGrounded();
+            Debug.Log(grounded);
             closestObject = getClosestInteractable();
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * MOVE_POWER, rb.velocity.y);
             if (Input.GetButtonDown("Jump") && grounded)
@@ -142,16 +145,16 @@ public class PlayerBehavior : MonoBehaviour
 
     private bool isGrounded()
     {
-        ContactPoint2D[] points = new ContactPoint2D[10];
-        int num = gameObject.GetComponent<BoxCollider2D>().GetContacts(points);
-        for(int i = 0; i < num; i++)
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)col.bounds.center - new Vector2(0, col.bounds.extents.y), Vector2.down, 0.1f, ~LayerMask.GetMask("Player"));
+        if(hit.collider != null && !hit.collider.isTrigger)
         {
-            if (points[i].point.y <= gameObject.GetComponent<BoxCollider2D>().bounds.min.y + 0.01 && points[i].point.x <= gameObject.GetComponent<BoxCollider2D>().bounds.max.x - 0.01 && points[i].point.x >= gameObject.GetComponent<BoxCollider2D>().bounds.min.x + 0.01)
-            {
-                return true;
-            }
+            Debug.Log(hit.collider.gameObject.name);
+            return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

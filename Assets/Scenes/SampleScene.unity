@@ -508,7 +508,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 112163656}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0fbef27c042a36c40819a913df9e8ece, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2992,7 +2992,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 752892299}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0fbef27c042a36c40819a913df9e8ece, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3773,7 +3773,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 925915407}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0fbef27c042a36c40819a913df9e8ece, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -9718,6 +9718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6793750701263465643, guid: 3ea91e0b978cc6a4888265a0e8eedeea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6793750701263465648, guid: 3ea91e0b978cc6a4888265a0e8eedeea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11892,7 +11897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541079598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4362884, y: -0.2991313, z: 0}
+  m_LocalPosition: {x: 2.44, y: -0.2991313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 144868192}
@@ -15580,16 +15585,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashGuyWrapperWrapper
       objectReference: {fileID: 0}
-    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 826689542839557057, guid: c37beb95213ed7d48a541a8156ad3459,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15644,6 +15639,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 826689541556004820, guid: c37beb95213ed7d48a541a8156ad3459,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c37beb95213ed7d48a541a8156ad3459, type: 3}
@@ -15797,11 +15802,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashCan
       objectReference: {fileID: 0}
-    - target: {fileID: 6179330578620171115, guid: d07aad9e685edc545b605e04cbfb7cbd,
-        type: 3}
-      propertyPath: m_Name
-      value: TrashCanLid
-      objectReference: {fileID: 0}
     - target: {fileID: 6179330577613544601, guid: d07aad9e685edc545b605e04cbfb7cbd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15906,6 +15906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UsedByEffector
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179330578620171115, guid: d07aad9e685edc545b605e04cbfb7cbd,
+        type: 3}
+      propertyPath: m_Name
+      value: TrashCanLid
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6179330578620170902, guid: d07aad9e685edc545b605e04cbfb7cbd, type: 3}
